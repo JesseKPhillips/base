@@ -14,9 +14,9 @@ public abstract class InputStream {
 
     public abstract int read();
 
-    public int read( byte[] b ){
+    public ptrdiff_t read( byte[] b ){
         foreach( uint idx, ref byte val; b ){
-            int c = read();
+            size_t c = read();
             if( c == -1 ){
                 return ( idx == 0 ) ? -1 : idx;
             }
@@ -25,7 +25,7 @@ public abstract class InputStream {
         return b.length;
     }
 
-    public int read( byte[] b, int off, int len ){
+    public ptrdiff_t read( byte[] b, size_t off, size_t len ){
         return read( b[ off .. off+len ] );
     }
 
@@ -34,7 +34,7 @@ public abstract class InputStream {
         return 0L;
     }
 
-    public int available(){
+    public size_t available(){
         return 0;
     }
 
@@ -42,7 +42,7 @@ public abstract class InputStream {
         implMissing( __FILE__, __LINE__ );
     }
 
-    public synchronized void mark( int readlimit ){
+    public synchronized void mark( size_t readlimit ){
         implMissing( __FILE__, __LINE__ );
     }
 

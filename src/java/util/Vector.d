@@ -24,7 +24,7 @@ class Vector : AbstractList, List {
         implMissing( __FILE__, __LINE__ );
     }
     override
-    public void   add(int index, Object element){
+    public void   add(size_t index, Object element){
         implMissing( __FILE__, __LINE__ );
     }
     override
@@ -46,14 +46,14 @@ class Vector : AbstractList, List {
         return false;
     }
     override
-    public bool    addAll(int index, Collection c){
+    public bool    addAll(size_t index, Collection c){
         implMissing( __FILE__, __LINE__ );
         return false;
     }
     public void   addElement(Object obj){
         add(obj);
     }
-    public int    capacity(){
+    public size_t    capacity(){
         return vect.length;
     }
     override
@@ -84,7 +84,7 @@ class Vector : AbstractList, List {
     //public void   copyInto(Object[] anArray){
     //    implMissing( __FILE__, __LINE__ );
     //}
-    public Object     elementAt(int index){
+    public Object     elementAt(size_t index){
         return get(index);
     }
     public Enumeration    elements(){
@@ -104,7 +104,7 @@ class Vector : AbstractList, List {
         return null;
     }
     override
-    public Object     get(int index){
+    public Object     get(size_t index){
         if( index >= used || index < 0 ){
             throw new ArrayIndexOutOfBoundsException( __FILE__, __LINE__ );
         }
@@ -116,15 +116,15 @@ class Vector : AbstractList, List {
         return 0;
     }
     override
-    public int    indexOf(Object elem){
+    public ptrdiff_t    indexOf(Object elem){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
-    public int    indexOf(Object elem, int index){
+    public ptrdiff_t    indexOf(Object elem, size_t index){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
-    public void   insertElementAt(Object obj, int index){
+    public void   insertElementAt(Object obj, size_t index){
         implMissing( __FILE__, __LINE__ );
     }
     override
@@ -141,11 +141,11 @@ class Vector : AbstractList, List {
         return null;
     }
     override
-    public int    lastIndexOf(Object elem){
+    public ptrdiff_t    lastIndexOf(Object elem){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
-    public int    lastIndexOf(Object elem, int index){
+    public ptrdiff_t    lastIndexOf(Object elem, size_t index){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
@@ -155,12 +155,12 @@ class Vector : AbstractList, List {
         return null;
     }
     override
-    public ListIterator   listIterator(int index){
+    public ListIterator   listIterator(size_t index){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
     override
-    public Object     remove(int index){
+    public Object     remove(size_t index){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
@@ -185,11 +185,11 @@ class Vector : AbstractList, List {
         implMissing( __FILE__, __LINE__ );
         return false;
     }
-    public void   removeElementAt(int index){
+    public void   removeElementAt(size_t index){
         implMissing( __FILE__, __LINE__ );
     }
     override
-    protected  void     removeRange(int fromIndex, int toIndex){
+    protected  void     removeRange(size_t fromIndex, size_t toIndex){
         implMissing( __FILE__, __LINE__ );
     }
     override
@@ -198,22 +198,22 @@ class Vector : AbstractList, List {
         return false;
     }
     override
-    public Object     set(int index, Object element){
+    public Object     set(size_t index, Object element){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
-    public void   setElementAt(Object obj, int index){
+    public void   setElementAt(Object obj, size_t index){
         implMissing( __FILE__, __LINE__ );
     }
     public void   setSize(int newSize){
         implMissing( __FILE__, __LINE__ );
     }
     override
-    public int    size(){
+    public size_t    size(){
         return used;
     }
     override
-    public List   subList(int fromIndex, int toIndex){
+    public List   subList(size_t fromIndex, size_t toIndex){
         implMissing( __FILE__, __LINE__ );
         return null;
     }

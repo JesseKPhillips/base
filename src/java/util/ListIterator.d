@@ -9,9 +9,9 @@ interface ListIterator : Iterator {
     public bool   hasNext();
     public bool   hasPrevious();
     public Object next();
-    public int    nextIndex();
+    public size_t nextIndex();
     public Object previous();
-    public int    previousIndex();
+    public size_t previousIndex();
     public void   remove();
     public void   set(Object o);
 }

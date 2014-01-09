@@ -12,8 +12,8 @@ public class BufferedInputStream : java.io.InputStream.InputStream {
 
     private const int defaultSize = 8192;
     protected byte[] buf;
-    protected int count = 0; /// The index one greater than the index of the last valid byte in the buffer.
-    protected int pos   = 0; /// The current position in the buffer.
+    protected size_t count = 0; /// The index one greater than the index of the last valid byte in the buffer.
+    protected size_t pos   = 0; /// The current position in the buffer.
     protected int markpos = (-1);
     protected int marklimit;
     java.io.InputStream.InputStream istr;
@@ -68,7 +68,7 @@ public class BufferedInputStream : java.io.InputStream.InputStream {
     }
 
     override
-    public int read( byte[] b, int off, int len ){
+    public ptrdiff_t read( byte[] b, size_t off, size_t len ){
         synchronized return super.read( b, off, len );
     }
 
@@ -78,9 +78,9 @@ public class BufferedInputStream : java.io.InputStream.InputStream {
     }
 
     override
-    public int available(){
+    public size_t available(){
         synchronized {
-            int istr_avail = 0;
+            size_t istr_avail = 0;
             if( istr !is null ){
                 istr_avail = istr.available();
             }
@@ -89,7 +89,7 @@ public class BufferedInputStream : java.io.InputStream.InputStream {
     }
 
     override
-    public synchronized void mark( int readlimit ){
+    public synchronized void mark( size_t readlimit ){
         implMissing( __FILE__, __LINE__ );
         this.istr.mark( readlimit );
     }

@@ -207,7 +207,7 @@ class HashMap : Map {
     public Object remove(String key){
         return remove(stringcast(key));
     }
-    public int    size(){
+    public size_t    size(){
         version(Tango){
             return map.size();
         } else { // Phobos

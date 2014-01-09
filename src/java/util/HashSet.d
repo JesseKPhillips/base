@@ -148,7 +148,7 @@ class HashSet : Set {
         implMissing( __FILE__, __LINE__ );
         return false;
     }
-    public int    size(){
+    public size_t    size(){
         version(Tango){
             return set.size();
         } else { // Phobos

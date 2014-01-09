@@ -12,7 +12,7 @@ class Stack : Vector {
     this(){
     }
     override
-    void   add(int index, Object element){
+    void   add(size_t index, Object element){
         implMissing( __FILE__, __LINE__ );
     }
     override
@@ -30,7 +30,7 @@ class Stack : Vector {
         return false;
     }
     override
-    bool    addAll(int index, Collection c){
+    bool    addAll(size_t index, Collection c){
         implMissing( __FILE__, __LINE__ );
         return false;
     }
@@ -39,7 +39,7 @@ class Stack : Vector {
         implMissing( __FILE__, __LINE__ );
     }
     override
-    int    capacity(){
+    size_t    capacity(){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
@@ -66,7 +66,7 @@ class Stack : Vector {
         implMissing( __FILE__, __LINE__ );
     }
     override
-    Object     elementAt(int index){
+    Object     elementAt(size_t index){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
@@ -89,7 +89,7 @@ class Stack : Vector {
         return null;
     }
     override
-    Object     get(int index){
+    Object     get(size_t index){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
@@ -99,17 +99,17 @@ class Stack : Vector {
         return 0;
     }
     override
-    int    indexOf(Object elem){
+    ptrdiff_t    indexOf(Object elem){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
     override
-    int    indexOf(Object elem, int index){
+    ptrdiff_t    indexOf(Object elem, size_t index){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
     override
-    void   insertElementAt(Object obj, int index){
+    void   insertElementAt(Object obj, size_t index){
         implMissing( __FILE__, __LINE__ );
     }
 //     bool    isEmpty(){
@@ -127,12 +127,12 @@ class Stack : Vector {
         return null;
     }
     override
-    int    lastIndexOf(Object elem){
+    ptrdiff_t    lastIndexOf(Object elem){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
     override
-    int    lastIndexOf(Object elem, int index){
+    ptrdiff_t    lastIndexOf(Object elem, size_t index){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
@@ -142,12 +142,12 @@ class Stack : Vector {
         return null;
     }
     override
-    ListIterator   listIterator(int index){
+    ListIterator   listIterator(size_t index){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
     override
-    Object     remove(int index){
+    Object     remove(size_t index){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
@@ -175,11 +175,11 @@ class Stack : Vector {
         return false;
     }
     override
-    void   removeElementAt(int index){
+    void   removeElementAt(size_t index){
         implMissing( __FILE__, __LINE__ );
     }
     override
-    protected  void     removeRange(int fromIndex, int toIndex){
+    protected  void     removeRange(size_t fromIndex, size_t toIndex){
         implMissing( __FILE__, __LINE__ );
     }
     override
@@ -188,12 +188,12 @@ class Stack : Vector {
         return false;
     }
     override
-    Object     set(int index, Object element){
+    Object     set(size_t index, Object element){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
     override
-    void   setElementAt(Object obj, int index){
+    void   setElementAt(Object obj, size_t index){
         implMissing( __FILE__, __LINE__ );
     }
     override
@@ -201,12 +201,12 @@ class Stack : Vector {
         implMissing( __FILE__, __LINE__ );
     }
     override
-    int    size(){
+    size_t    size(){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
     override
-    List   subList(int fromIndex, int toIndex){
+    List   subList(size_t fromIndex, size_t toIndex){
         implMissing( __FILE__, __LINE__ );
         return null;
     }

@@ -170,7 +170,7 @@ class TreeSet : AbstractSet, SortedSet {
         return false;
     }
     override
-    public int    size(){
+    public size_t    size(){
         version(Tango){
             return set.size();
         } else { // Phobos

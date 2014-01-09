@@ -60,7 +60,7 @@ abstract class AbstractCollection : Collection {
         implMissing( __FILE__, __LINE__ );
         return false;
     }
-    abstract  int   size();
+    abstract  size_t   size();
     Object[]       toArray(){
         implMissing( __FILE__, __LINE__ );
         return null;

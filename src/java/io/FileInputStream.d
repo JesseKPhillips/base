@@ -23,8 +23,8 @@ public class FileInputStream : java.io.InputStream.InputStream {
         private std.stream.File conduit;
     }
     private ubyte[] buffer;
-    private int buf_pos;
-    private int buf_size;
+    private size_t buf_pos;
+    private size_t buf_size;
     private const int BUFFER_SIZE = 0x10000;
     private bool eof;
 
@@ -104,7 +104,7 @@ public class FileInputStream : java.io.InputStream.InputStream {
     }
 
     override
-    public int available(){
+    public size_t available(){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }

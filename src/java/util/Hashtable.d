@@ -152,7 +152,7 @@ class Hashtable : Dictionary, Map {
     }
 //     public Object remove(String key)
     override
-    public int    size(){
+    public size_t    size(){
         synchronized return map.length;
     }
     public Collection values(){

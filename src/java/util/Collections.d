@@ -86,13 +86,13 @@ class Collections {
         public Object next(){
             return it.next();
         }
-        public int    nextIndex(){
+        public size_t    nextIndex(){
             return it.nextIndex();
         }
         public Object previous(){
             return it.previous();
         }
-        public int    previousIndex(){
+        public size_t    previousIndex(){
             return it.previousIndex();
         }
         public void   remove(){
@@ -107,7 +107,7 @@ class Collections {
         this(List list){
             this.list = list;
         }
-        public void     add(int index, Object element){
+        public void     add(size_t index, Object element){
             unsupported();
         }
         public bool     add(Object o){
@@ -122,7 +122,7 @@ class Collections {
             unsupported();
             return false; // make compiler happy
         }
-        public bool     addAll(int index, Collection c){
+        public bool     addAll(size_t index, Collection c){
             unsupported();
             return false; // make compiler happy
         }
@@ -142,14 +142,14 @@ class Collections {
         public equals_t      opEquals(Object o){
             return cast(equals_t)list.opEquals(o);
         }
-        public Object   get(int index){
+        public Object   get(size_t index){
             return list.get(index);
         }
         override
         public hash_t   toHash(){
             return list.toHash();
         }
-        public int      indexOf(Object o){
+        public ptrdiff_t      indexOf(Object o){
             return list.indexOf(o);
         }
         public bool     isEmpty(){
@@ -158,16 +158,16 @@ class Collections {
         public Iterator iterator(){
             return new UnmodifiableIterator( list.iterator() );
         }
-        public int      lastIndexOf(Object o){
+        public ptrdiff_t      lastIndexOf(Object o){
             return list.lastIndexOf(o);
         }
         public ListIterator   listIterator(){
             return new UnmodifiableListIterator( list.listIterator() );
         }
-        public ListIterator   listIterator(int index){
+        public ListIterator   listIterator(size_t index){
             return new UnmodifiableListIterator( list.listIterator(index) );
         }
-        public Object   remove(int index){
+        public Object   remove(size_t index){
             unsupported();
             return null; // make compiler happy
         }
@@ -187,14 +187,14 @@ class Collections {
             unsupported();
             return false; // make compiler happy
         }
-        public Object   set(int index, Object element){
+        public Object   set(size_t index, Object element){
             unsupported();
             return null; // make compiler happy
         }
-        public int      size(){
+        public size_t   size(){
             return list.size();
         }
-        public List     subList(int fromIndex, int toIndex){
+        public List     subList(size_t fromIndex, size_t toIndex){
             return new UnmodifieableList( list.subList(fromIndex,toIndex));
         }
         public Object[] toArray(){
@@ -266,34 +266,34 @@ class Collections {
         // Collection
         public int opApply (int delegate(ref Object value) dg){ synchronized(this){ return this.list.opApply(dg); } }
         // List
-        public void     add(int index, Object element){ synchronized(this){ return this.list.add(index, element); } }
+        public void     add(size_t index, Object element){ synchronized(this){ return this.list.add(index, element); } }
         public bool     add(Object o){ synchronized(this){ return this.list.add(o); } }
         public bool     add(String o){ synchronized(this){ return this.list.add(o); } }
         public bool     addAll(Collection c){ synchronized(this){ return this.list.addAll(c); } }
-        public bool     addAll(int index, Collection c){ synchronized(this){ return this.list.addAll(index, c); } }
+        public bool     addAll(size_t index, Collection c){ synchronized(this){ return this.list.addAll(index, c); } }
         public void     clear(){ synchronized(this){ return this.list.clear(); } }
         public bool     contains(Object o){ synchronized(this){ return this.list.contains(o); } }
         public bool     contains(String o){ synchronized(this){ return this.list.contains(o); } }
         public bool     containsAll(Collection c){ synchronized(this){ return this.list.containsAll(c); } }
         override
         public equals_t      opEquals(Object o){ synchronized(this){ return cast(equals_t)this.list.opEquals(o); } }
-        public Object   get(int index){ synchronized(this){ return this.list.get(index); } }
+        public Object   get(size_t index){ synchronized(this){ return this.list.get(index); } }
         override
         public hash_t   toHash(){ return this.list.toHash(); }
-        public int      indexOf(Object o){ synchronized(this){ return this.list.indexOf(o); } }
+        public ptrdiff_t      indexOf(Object o){ synchronized(this){ return this.list.indexOf(o); } }
         public bool     isEmpty(){ synchronized(this){ return this.list.isEmpty(); } }
         public Iterator iterator(){ synchronized(this){ return this.list.iterator(); } }
-        public int      lastIndexOf(Object o){ synchronized(this){ return this.list.lastIndexOf(o); } }
+        public ptrdiff_t      lastIndexOf(Object o){ synchronized(this){ return this.list.lastIndexOf(o); } }
         public ListIterator   listIterator(){ synchronized(this){ return this.list.listIterator(); } }
-        public ListIterator   listIterator(int index){ synchronized(this){ return this.list.listIterator(index); } }
-        public Object   remove(int index){ synchronized(this){ return this.list.remove(index); } }
+        public ListIterator   listIterator(size_t index){ synchronized(this){ return this.list.listIterator(index); } }
+        public Object   remove(size_t index){ synchronized(this){ return this.list.remove(index); } }
         public bool     remove(Object o){ synchronized(this){ return this.list.remove(o); } }
         public bool     remove(String o){ synchronized(this){ return this.list.remove(o); } }
         public bool     removeAll(Collection c){ synchronized(this){ return this.list.removeAll(c); } }
         public bool     retainAll(Collection c){ synchronized(this){ return this.list.retainAll(c); } }
-        public Object   set(int index, Object element){ synchronized(this){ return this.list.set(index,element); } }
-        public int      size(){ synchronized(this){ return this.list.size(); } }
-        public List     subList(int fromIndex, int toIndex){ synchronized(this){ return this.list.subList(fromIndex,toIndex); } }
+        public Object   set(size_t index, Object element){ synchronized(this){ return this.list.set(index,element); } }
+        public size_t   size(){ synchronized(this){ return this.list.size(); } }
+        public List     subList(size_t fromIndex, size_t toIndex){ synchronized(this){ return this.list.subList(fromIndex,toIndex); } }
         public Object[] toArray(){ synchronized(this){ return this.list.toArray(); } }
         public Object[] toArray(Object[] a){ synchronized(this){ return this.list.toArray(a); } }
         public String[] toArray(String[] a){ synchronized(this){ return this.list.toArray(a); } }
@@ -336,7 +336,7 @@ class Collections {
         public void   putAll(Map t){ synchronized(this){ return this.map.putAll(t); } }
         public Object remove(Object key){ synchronized(this){ return this.map.remove(key); } }
         public Object remove(String key){ synchronized(this){ return this.map.remove(key); } }
-        public int    size(){ synchronized(this){ return this.map.size(); } }
+        public size_t    size(){ synchronized(this){ return this.map.size(); } }
         public Collection values(){ synchronized(this){ return this.map.values(); } }
 
         // only for D

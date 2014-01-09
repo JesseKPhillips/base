@@ -38,7 +38,7 @@ interface Map {
     public void   putAll(Map t);
     public Object remove(Object key);
     public Object remove(String key);
-    public int    size();
+    public size_t size();
     public Collection values();
 
     // only for D

@@ -32,7 +32,7 @@ String xmlUnescape( String str ){
 
             // search semi
             int len = Math.min( cast(int)src.length, 10 ); // limit semi search to possible longest entityname
-            int semi = java.lang.util.indexOf( src[0 .. len ], ';' );
+            ptrdiff_t semi = java.lang.util.indexOf( src[0 .. len ], ';' );
             if( semi is -1 ) error(); // no semi found
 
             String entityName = src[ 0 .. semi ]; // name without semi

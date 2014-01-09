@@ -18,7 +18,7 @@ interface Collection {
     public bool    remove(String o);
     public bool    removeAll(Collection c);
     public bool    retainAll(Collection c);
-    public int    size();
+    public size_t    size();
     public Object[]   toArray();
     public Object[]   toArray(Object[] a);
 

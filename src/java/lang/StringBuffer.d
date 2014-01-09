@@ -10,6 +10,7 @@ version(Tango){
 } else { // Phobos
     static import std.outbuffer;
     static import std.utf;
+    import std.conv;
 }
 
 class StringBuffer : CharSequence {
@@ -54,7 +55,7 @@ class StringBuffer : CharSequence {
         version(Tango){
             return buffer.length();
         } else { // Phobos
-            return buffer.offset;
+            return to!int(buffer.offset);
         }
     }
 
@@ -141,7 +142,7 @@ class StringBuffer : CharSequence {
     StringBuffer replace(int start, int end, in char[] str) {
         if(start < 0 || start > length() || start > end)
             throw new StringIndexOutOfBoundsException("start is negative, greater than length(), or greater than end");
-        
+
         version(Tango){
             buffer.select(start, end-start);
             buffer.replace(str);
@@ -151,8 +152,8 @@ class StringBuffer : CharSequence {
                 buffer.offset = start;
                 return append(str);
             }
-            int strEnd = start + str.length, incr = strEnd - end;
-            
+            ptrdiff_t strEnd = start + str.length, incr = strEnd - end;
+
             if( incr > 0 ) {
                 buffer.spread(end, incr);
             }

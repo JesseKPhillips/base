@@ -29,7 +29,7 @@ class LinkedList : List {
         this();
         addAll(c);
     }
-    void   add(int index, Object element){
+    void   add(size_t index, Object element){
         version(Tango){
             list.addAt(index,element);
         } else { // Phobos
@@ -56,7 +56,7 @@ class LinkedList : List {
         }
         return res;
     }
-    bool    addAll(int index, Collection c){
+    bool    addAll(size_t index, Collection c){
         implMissing( __FILE__, __LINE__ );
         return false;
     }
@@ -117,7 +117,7 @@ class LinkedList : List {
     void   copyInto(Object[] anArray){
         implMissing( __FILE__, __LINE__ );
     }
-    Object     elementAt(int index){
+    Object     elementAt(size_t index){
         version(Tango){
             return list.get(index);
         } else { // Phobos
@@ -141,7 +141,7 @@ class LinkedList : List {
         implMissing( __FILE__, __LINE__ );
         return null;
     }
-    Object     get(int index){
+    Object     get(size_t index){
         version(Tango){
             return list.get(index);
         } else { // Phobos
@@ -170,15 +170,15 @@ class LinkedList : List {
         implMissingSafe( __FILE__, __LINE__ );
         return 0;
     }
-    int    indexOf(Object elem){
+    ptrdiff_t    indexOf(Object elem){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
-    int    indexOf(Object elem, int index){
+    ptrdiff_t    indexOf(Object elem, size_t index){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
-    void   insertElementAt(Object obj, int index){
+    void   insertElementAt(Object obj, size_t index){
         implMissing( __FILE__, __LINE__ );
     }
     bool    isEmpty(){
@@ -197,11 +197,11 @@ class LinkedList : List {
         implMissing( __FILE__, __LINE__ );
         return null;
     }
-    int    lastIndexOf(Object elem){
+    ptrdiff_t    lastIndexOf(Object elem){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
-    int    lastIndexOf(Object elem, int index){
+    ptrdiff_t    lastIndexOf(Object elem, size_t index){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
@@ -209,11 +209,11 @@ class LinkedList : List {
         implMissing( __FILE__, __LINE__ );
         return null;
     }
-    ListIterator   listIterator(int index){
+    ListIterator   listIterator(size_t index){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
-    Object     remove(int index){
+    Object     remove(size_t index){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
@@ -255,27 +255,27 @@ class LinkedList : List {
         implMissing( __FILE__, __LINE__ );
         return false;
     }
-    void   removeElementAt(int index){
+    void   removeElementAt(size_t index){
         implMissing( __FILE__, __LINE__ );
     }
-    protected  void     removeRange(int fromIndex, int toIndex){
+    protected  void     removeRange(size_t fromIndex, size_t toIndex){
         implMissing( __FILE__, __LINE__ );
     }
     bool    retainAll(Collection c){
         implMissing( __FILE__, __LINE__ );
         return false;
     }
-    Object     set(int index, Object element){
+    Object     set(size_t index, Object element){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
-    void   setElementAt(Object obj, int index){
+    void   setElementAt(Object obj, size_t index){
         implMissing( __FILE__, __LINE__ );
     }
     void   setSize(int newSize){
         implMissing( __FILE__, __LINE__ );
     }
-    int    size(){
+    size_t    size(){
         version(Tango){
             return list.size();
         } else { // Phobos
@@ -283,7 +283,7 @@ class LinkedList : List {
             return 0;
         }
     }
-    List   subList(int fromIndex, int toIndex){
+    List   subList(size_t fromIndex, size_t toIndex){
         implMissing( __FILE__, __LINE__ );
         return null;
     }

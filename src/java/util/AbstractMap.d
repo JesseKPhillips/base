@@ -78,7 +78,7 @@ abstract class AbstractMap : Map {
         implMissing( __FILE__, __LINE__ );
         return null;
     }
-    int    size(){
+    size_t    size(){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }

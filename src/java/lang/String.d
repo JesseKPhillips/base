@@ -15,6 +15,7 @@ version(Tango){
     static import std.string;
     static import std.conv;
     static import std.exception;
+    import std.conv;
 }
 
 alias TryImmutable!(char)[]  String;
@@ -114,7 +115,7 @@ String String_valueOf( in wchar[] wstr ){
 }
 
 int length( String str ){
-    return str.length;
+    return to!int(str.length);
 }
 
 /// Extension to String
@@ -141,8 +142,12 @@ public int indexOf( in char[] str, char searched ){
     version(Tango){
         return tangoToJavaIdx(tango.text.Util.locate( str, searched ), str);
     } else { // Phobos
-        return std.string.indexOf(str, searched);
+        return to!int(std.string.indexOf(str, searched));
     }
+}
+
+public int indexOf( in char[] str, char searched, long fromIndex ){
+    return indexOf(str, searched, to!int(fromIndex));
 }
 
 /// Extension to String
@@ -152,9 +157,9 @@ public int indexOf( in char[] str, char searched, int fromIndex ){
     version(Tango){
         return tangoToJavaIdx(tango.text.Util.locate( str, searched, fromIndex ), str);
     } else { // Phobos
-        int res = std.string.indexOf(str[fromIndex .. $], searched);
+        ptrdiff_t res = std.string.indexOf(str[fromIndex .. $], searched);
         if (res !is -1) res += fromIndex;
-        return res;
+        return to!int(res);
     }
 }
 
@@ -172,31 +177,31 @@ public int indexOf(in char[] str, in char[] sub, int fromIndex){
     version(Tango){
         return tangoToJavaIdx(tango.text.Util.locatePattern( str, sub, fromIndex ), str);
     } else { // Phobos
-        int res = std.string.indexOf(str[fromIndex .. $], sub);
+        ptrdiff_t res = std.string.indexOf(str[fromIndex .. $], sub);
         if (res !is -1) res += fromIndex;
-        return res;
+        return to!int(res);
     }
 }
 
 /// Extension to String
 public int lastIndexOf(in char[] str, char ch){
-    return lastIndexOf( str, ch, str.length - 1 );
+    return lastIndexOf( str, ch, to!int(str.length - 1 ));
 }
 
 /// Extension to String
 public int lastIndexOf(in char[] str, char ch, int fromIndex){
     if(fromIndex >= str.length)
-        fromIndex = str.length - 1;
+        fromIndex = to!int(str.length - 1);
     version(Tango){
         return tangoToJavaIdx(tango.text.Util.locatePrior( str, ch, fromIndex + 1 ), str);
     } else { // Phobos
-        return std.string.lastIndexOf(str[0 .. fromIndex + 1], ch);
+        return to!int(std.string.lastIndexOf(str[0 .. fromIndex + 1], ch));
     }
 }
 
 /// Extension to String
 public int lastIndexOf(in char[] str, in char[] sub ){
-    return lastIndexOf( str, sub, str.length - sub.length );
+    return lastIndexOf( str, sub, to!int(str.length - sub.length ));
 }
 
 /// Extension to String
@@ -209,13 +214,13 @@ public int lastIndexOf(in char[] str, in char[] sub, int fromIndex){
     version(Tango){
         return tangoToJavaIdx(tango.text.Util.locatePatternPrior( str, sub, fromIndex + 1 ), str);
     } else { // Phobos
-        size_t to = fromIndex + sub.length;
-        return std.string.lastIndexOf(str[0 .. to < $ ? to : $], sub);
+        size_t t = fromIndex + sub.length;
+        return to!int(std.string.lastIndexOf(str[0 .. t < $ ? t : $], sub));
     }
 }
 
 unittest {
-    sizediff_t i;
+    ptrdiff_t i;
 
     i = lastIndexOf("", 'a');
     assert(i == -1);
@@ -346,32 +351,32 @@ public String replace( String str, char from, char to ){
 }
 
 /// Extension to String
-public String substring( String str, int start ){
+public String substring( String str, size_t start ){
     return _idup(str[ start .. $ ]);
 }
 
 /// Extension to String
-public String substring( String str, int start, int end ){
+public String substring( String str, size_t start, size_t end ){
     return _idup(str[ start .. end ]);
 }
 
 /// Extension to String
-public wchar[] substring( String16 str, int start ){
+public wchar[] substring( String16 str, size_t start ){
     return str[ start .. $ ].dup;
 }
 
 /// Extension to String
-public wchar[] substring( String16 str, int start, int end ){
+public wchar[] substring( String16 str, size_t start, size_t end ){
     return str[ start .. end ].dup;
 }
 
 /// Extension to String
-public char charAt( String str, int pos ){
+public char charAt( String str, size_t pos ){
     return str[ pos ];
 }
 
 /// Extension to String
-public void getChars( String src, int srcBegin, int srcEnd, char[] dst, int dstBegin){
+public void getChars( String src, size_t srcBegin, size_t srcEnd, char[] dst, size_t dstBegin){
     dst[ dstBegin .. dstBegin + srcEnd - srcBegin ] = src[ srcBegin .. srcEnd ];
 }
 
@@ -574,7 +579,7 @@ class StringCharSequence : CharSequence {
         return str[index];
     }
     int length(){
-        return str.length;
+        return to!int(str.length);
     }
     CharSequence subSequence(int start, int end){
         return new StringCharSequence( str[ start .. end ]);

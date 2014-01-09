@@ -27,7 +27,7 @@ version(Tango){
             this.istr = istr;
         }
 
-        size_t read (void[] dst){
+        ptrdiff_t read (void[] dst){
             int res = istr.read( cast(byte[])dst );
             return res;
         }
@@ -104,13 +104,13 @@ public class InflaterInputStream : java.io.InputStream.InputStream {
     }
 
     override
-    public int read( byte[] b, int off, int len ){
+    public ptrdiff_t read( byte[] b, size_t off, size_t len ){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
 
     override
-    public int available(){
+    public size_t available(){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
@@ -137,7 +137,7 @@ public class InflaterInputStream : java.io.InputStream.InputStream {
     }
 
     override
-    public synchronized void mark( int readlimit ){
+    public synchronized void mark( size_t readlimit ){
         implMissing( __FILE__, __LINE__ );
     }
 

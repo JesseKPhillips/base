@@ -27,6 +27,6 @@ class Dictionary {
     public Object remove(String key){
         return remove(stringcast(key));
     }
-    abstract  int   size();
+    abstract  size_t   size();
 }
 

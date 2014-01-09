@@ -39,7 +39,8 @@ template SimpleType(T) {
 
         T element = items[index];
 
-        int length = items.length;
+        import std.conv;
+        int length = to!uint(items.length);
         if(length == 1){
             items.length = 0;
             return;// element;
@@ -54,8 +55,9 @@ template SimpleType(T) {
     }
 
     static void insert(ref T[] items, T item, int index = -1) {
+        import std.conv;
         if(index == -1)
-            index = items.length;
+            index = to!uint(items.length);
 
         if(index < 0 || index > items.length ){
             throw new ArrayIndexOutOfBoundsException(__FILE__, __LINE__);
@@ -110,7 +112,7 @@ template SimpleType(T) {
 
 
 class System {
-    static void arraycopy(T)(in T[] src, uint srcPos, T[] dest, uint destPos, uint len) {
+    static void arraycopy(T)(in T[] src, size_t srcPos, T[] dest, size_t destPos, size_t len) {
         if(len == 0) return;
 
         assert(src);
@@ -126,8 +128,8 @@ class System {
                 }
             }
             else{
-                for(int i=len-1; i>=0; --i){
-                    dest[destPos+i] = cast(T)src[srcPos+i];
+                for(size_t i=len; i>0; --i){
+                    dest[destPos+i-1] = cast(T)src[srcPos+i-1];
                 }
             }
         }else{
@@ -144,7 +146,7 @@ class System {
         version(Tango) tango.stdc.stdlib.exit(code);
         else           std.c.stdlib.exit(code);
     }
-    public static int identityHashCode(Object x){
+    public static size_t identityHashCode(Object x){
         if( x is null ){
             return 0;
         }

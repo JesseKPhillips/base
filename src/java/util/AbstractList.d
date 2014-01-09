@@ -11,7 +11,7 @@ abstract class AbstractList : AbstractCollection, List {
     this(){
     }
 
-    public void add(int index, Object element){
+    public void add(size_t index, Object element){
         throw new UnsupportedOperationException();
     }
     public bool add(String o){
@@ -26,7 +26,7 @@ abstract class AbstractList : AbstractCollection, List {
     public bool addAll(Collection c){
         throw new UnsupportedOperationException();
     }
-    public bool addAll(int index, Collection c){
+    public bool addAll(size_t index, Collection c){
         throw new UnsupportedOperationException();
     }
     override
@@ -41,14 +41,14 @@ abstract class AbstractList : AbstractCollection, List {
     override
     public abstract equals_t opEquals(Object o);
 
-    public abstract Object get(int index);
+    public abstract Object get(size_t index);
 
     override
     public abstract hash_t  toHash();
 
-    public int    indexOf(Object o){
+    public ptrdiff_t    indexOf(Object o){
         auto it = listIterator();
-        int idx = 0;
+        ptrdiff_t idx = 0;
         while(it.hasNext()){
             auto t = it.next();
             if( t is null ? o is null : t == o){
@@ -67,7 +67,7 @@ abstract class AbstractList : AbstractCollection, List {
         implMissing( __FILE__, __LINE__ );
         return null;
     }
-    public int    lastIndexOf(Object o){
+    public ptrdiff_t    lastIndexOf(Object o){
         implMissing( __FILE__, __LINE__ );
         return 0;
     }
@@ -75,14 +75,14 @@ abstract class AbstractList : AbstractCollection, List {
         implMissing( __FILE__, __LINE__ );
         return null;
     }
-    public ListIterator   listIterator(int index){
+    public ListIterator   listIterator(size_t index){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
-    public Object         remove(int index){
+    public Object         remove(size_t index){
         throw new UnsupportedOperationException();
     }
-    protected void         removeRange(int fromIndex, int toIndex){
+    protected void         removeRange(size_t fromIndex, size_t toIndex){
     }
     override
     public bool     remove(Object o){ return super.remove(o); }
@@ -92,10 +92,10 @@ abstract class AbstractList : AbstractCollection, List {
     public bool     removeAll(Collection c){ return super.removeAll(c); }
     override
     public bool     retainAll(Collection c){ return super.retainAll(c); }
-    public Object set(int index, Object element){
+    public Object set(size_t index, Object element){
         throw new UnsupportedOperationException();
     }
-    public List   subList(int fromIndex, int toIndex){
+    public List   subList(size_t fromIndex, size_t toIndex){
         implMissing( __FILE__, __LINE__ );
         return null;
     }

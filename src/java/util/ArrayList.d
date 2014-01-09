@@ -12,16 +12,16 @@ class ArrayList : AbstractList, List {
 
     this(){
     }
-    this(int size){
+    this(size_t size){
         data.length = size;
         data.length = 0;
     }
     this(Collection col){
-        this(cast(int)(col.size*1.1));
+        this(cast(size_t)(col.size*1.1));
         addAll(col);
     }
     override
-    void   add(int index, Object element){
+    void   add(size_t index, Object element){
         data.length = data.length +1;
         System.arraycopy( data, index, data, index+1, data.length - index -1 );
         data[index] = element;
@@ -38,7 +38,7 @@ class ArrayList : AbstractList, List {
     override
     bool    addAll(Collection c){
         if( c.size() is 0 ) return false;
-        uint idx = data.length;
+        size_t idx = data.length;
         data.length = data.length + c.size();
         foreach( o; c ){
             data[ idx++ ] = o;
@@ -46,7 +46,7 @@ class ArrayList : AbstractList, List {
         return true;
     }
     override
-    bool    addAll(int index, Collection c){
+    bool    addAll(size_t index, Collection c){
         implMissing( __FILE__, __LINE__ );
         return false;
     }
@@ -88,7 +88,7 @@ class ArrayList : AbstractList, List {
             if( data.length !is other.data.length ){
                 return false;
             }
-            for( int i = 0; i < data.length; i++ ){
+            for( size_t i = 0; i < data.length; i++ ){
                 if( data[i] is other.data[i] ){
                     continue;
                 }
@@ -105,20 +105,20 @@ class ArrayList : AbstractList, List {
         return false;
     }
     override
-    Object     get(int index){
+    Object     get(size_t index){
         return data[index];
     }
     public override hash_t toHash(){
         // http://java.sun.com/j2se/1.4.2/docs/api/java/util/List.html#hashCode()
         hash_t hashCode = 1;
-        for( int i = 0; i < data.length; i++ ){
+        for( size_t i = 0; i < data.length; i++ ){
             Object obj = data[i];
             hashCode = 31 * hashCode + (obj is null ? 0 : obj.toHash());
         }
         return hashCode;
     }
     override
-    int    indexOf(Object o){
+    ptrdiff_t    indexOf(Object o){
         foreach( i, v; data ){
             if( data[i] is o ){
                 return i;
@@ -137,7 +137,7 @@ class ArrayList : AbstractList, List {
         return data.length is 0;
     }
     class LocalIterator : Iterator{
-        int idx = -1;
+        ptrdiff_t idx = -1;
         public this(){
         }
         public bool hasNext(){
@@ -160,7 +160,7 @@ class ArrayList : AbstractList, List {
         return new LocalIterator();
     }
     override
-    int    lastIndexOf(Object o){
+    ptrdiff_t    lastIndexOf(Object o){
         foreach_reverse( i, v; data ){
             if( data[i] is o ){
                 return i;
@@ -176,7 +176,7 @@ class ArrayList : AbstractList, List {
     }
 
     class LocalListIterator : ListIterator {
-        int idx_next = 0;
+        ptrdiff_t idx_next = 0;
         public bool hasNext(){
             return idx_next < data.length;
         }
@@ -199,7 +199,7 @@ class ArrayList : AbstractList, List {
         public bool   hasPrevious(){
             return idx_next > 0;
         }
-        public int    nextIndex(){
+        public size_t    nextIndex(){
             return idx_next;
         }
         public Object previous(){
@@ -207,7 +207,7 @@ class ArrayList : AbstractList, List {
             Object res = data[idx_next];
             return res;
         }
-        public int    previousIndex(){
+        public size_t    previousIndex(){
             return idx_next-1;
         }
         public void   set(Object o){
@@ -220,12 +220,12 @@ class ArrayList : AbstractList, List {
         return new LocalListIterator();
     }
     override
-    ListIterator   listIterator(int index){
+    ListIterator   listIterator(size_t index){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
     override
-    Object     remove(int index){
+    Object     remove(size_t index){
         Object res = data[index];
         System.arraycopy( data, index+1, data, index, data.length - index - 1 );
         data.length = data.length -1;
@@ -233,8 +233,8 @@ class ArrayList : AbstractList, List {
     }
     override
     bool    remove(Object o){
-        int idx = -1;
-        for( int i = 0; i < data.length; i++ ){
+        ptrdiff_t idx = -1;
+        for( ptrdiff_t i = 0; i < data.length; i++ ){
             if( data[i] is null ? o is null : data[i] == o ){
                 idx = i;
                 break;
@@ -243,7 +243,7 @@ class ArrayList : AbstractList, List {
         if( idx is -1 ){
             return false;
         }
-        for( int i = idx + 1; i < data.length; i++ ){
+        for( ptrdiff_t i = idx + 1; i < data.length; i++ ){
             data[i-1] = data[i];
         }
         data.length = data.length - 1;
@@ -264,21 +264,21 @@ class ArrayList : AbstractList, List {
         return false;
     }
     override
-    protected  void     removeRange(int fromIndex, int toIndex){
+    protected  void     removeRange(size_t fromIndex, size_t toIndex){
         implMissing( __FILE__, __LINE__ );
     }
     override
-    Object     set(int index, Object element){
+    Object     set(size_t index, Object element){
         Object res = data[index];
         data[index] = element;
         return res;
     }
     override
-    int    size(){
+    size_t    size(){
         return data.length;
     }
     override
-    List   subList(int fromIndex, int toIndex){
+    List   subList(size_t fromIndex, size_t toIndex){
         implMissing( __FILE__, __LINE__ );
         return null;
     }
@@ -306,7 +306,7 @@ class ArrayList : AbstractList, List {
             if( res.length < data.length ){
                 res.length = data.length;
             }
-            int idx = 0;
+            size_t idx = 0;
             foreach( o; data ){
                 res[idx] = stringcast(o);
             }
